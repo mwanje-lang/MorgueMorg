@@ -4,39 +4,77 @@ import 'package:e_commerce/models/Product.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:flutter/material.dart';
 
-class ColorDots extends StatelessWidget {
+class ColorDots extends StatefulWidget {
   const ColorDots({
     super.key,
     required this.product,
+    required this.onColorChanged,
+    required this.onQuantityChanged,
   });
 
   final Product product;
+  final Function(int) onColorChanged;
+  final Function(int) onQuantityChanged;
+
+  @override
+  State<ColorDots> createState() => _ColorDotsState();
+}
+
+class _ColorDotsState extends State<ColorDots> {
+  int selectedColor = 0;
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
-    // To begin with there will be a fixed value
-    int selectedColor = 0;
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
-            product.colors.length,
-            (index) => ColorDot(
-              color: product.colors[index],
-              isSelected: selectedColor == index,
+            widget.product.colors.length,
+            (index) => GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedColor = index;
+                });
+                widget.onColorChanged(index);
+              },
+              child: ColorDot(
+                color: widget.product.colors[index],
+                isSelected: selectedColor == index,
+              ),
             ),
           ),
           Spacer(),
           RoundedIconBtn(
             icon: Icons.remove,
-            press: () {},
+            press: () {
+              if (quantity > 1) {
+                setState(() {
+                  quantity--;
+                });
+                widget.onQuantityChanged(quantity);
+              }
+            },
+          ),
+          SizedBox(width: getProportionateScreenWidth(15)),
+          Text(
+            quantity.toString(),
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(16),
+              fontWeight: FontWeight.w600,
+            ),
           ),
           SizedBox(width: getProportionateScreenWidth(15)),
           RoundedIconBtn(
             icon: Icons.add,
-            press: () {},
+            press: () {
+              setState(() {
+                quantity++;
+              });
+              widget.onQuantityChanged(quantity);
+            },
           ),
         ],
       ),
