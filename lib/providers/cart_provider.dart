@@ -31,6 +31,8 @@ class CartProvider with ChangeNotifier {
       );
     } else {
       // Add new item to cart
+      // Note: selectedColorIndex is currently not stored in Cart model
+      // This could be extended in the future to support different color variants
       _cartItems.add(Cart(
         product: product,
         numOfItems: quantity,
