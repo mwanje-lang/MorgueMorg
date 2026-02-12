@@ -14,7 +14,17 @@ class PopularProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SectionTitle(text: "Popular Products", press: () {}),
+        SectionTitle(
+          text: "Popular Products",
+          press: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('View all popular products'),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          },
+        ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
