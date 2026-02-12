@@ -20,7 +20,7 @@ class PopularProducts extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('View all popular products'),
-                duration: Duration(seconds: 1),
+                duration: Duration(seconds: 2),
               ),
             );
           },

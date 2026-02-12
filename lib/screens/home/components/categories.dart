@@ -27,7 +27,7 @@ class Categories extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('${categories[index]["text"]} category selected'),
-                  duration: Duration(seconds: 1),
+                  duration: Duration(seconds: 2),
                 ),
               );
             },

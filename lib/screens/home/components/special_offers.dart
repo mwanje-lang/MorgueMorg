@@ -17,7 +17,7 @@ class SpecialOffers extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('View all special offers'),
-                duration: Duration(seconds: 1),
+                duration: Duration(seconds: 2),
               ),
             );
           },
@@ -35,7 +35,7 @@ class SpecialOffers extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Smartphones special offer selected'),
-                      duration: Duration(seconds: 1),
+                      duration: Duration(seconds: 2),
                     ),
                   );
                 },
@@ -48,7 +48,7 @@ class SpecialOffers extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Fashion special offer selected'),
-                      duration: Duration(seconds: 1),
+                      duration: Duration(seconds: 2),
                     ),
                   );
                 },
