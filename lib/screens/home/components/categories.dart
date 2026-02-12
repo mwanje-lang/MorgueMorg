@@ -23,7 +23,14 @@ class Categories extends StatelessWidget {
           (index) => CategoryCard(
             icon: categories[index]["icon"],
             text: categories[index]["text"],
-            press: () {},
+            press: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${categories[index]["text"]} category selected'),
+                  duration: Duration(seconds: 1),
+                ),
+              );
+            },
           ),
         ),
       ),
